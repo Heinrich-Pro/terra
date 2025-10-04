@@ -1,26 +1,104 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #6a5acd; /* Violet NASA */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #4a4a8a; /* Bleu-violet comme dans l'image */
     color: #fff;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 h1 {
     text-align: center;
     color: #fff;
-    border-bottom: 2px solid #fff;
-    padding-bottom: 10px;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    font-weight: 300;
 }
 
-.content {
+/* Layout en deux colonnes pour la section principale */
+.main-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+    min-height: 400px;
+}
+
+/* Panneau gauche - zone d'image */
+.image-panel {
+    background-color: #d0d0d0; /* Gris clair comme dans l'image */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-panel img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Panneau droit - texte d'introduction */
+.intro-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.intro-text {
+    font-size: 1.1em;
+    line-height: 1.7;
     text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* Section de contenu principal */
+.content-section {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.content-section h2 {
+    color: #fff;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.content-section h3 {
+    color: #fff;
+    font-size: 1.4em;
+    margin: 25px 0 15px 0;
+    font-weight: 400;
+}
+
+.content-section p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.content-section ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.content-section li {
+    margin-bottom: 8px;
     line-height: 1.6;
 }
 
@@ -51,14 +129,214 @@ h1 {
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 30px;
     background-color: #fff;
-    color: #6a5acd;
+    color: #4a4a8a;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px;
     margin-top: 20px;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
-    background-color: #ddd;
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Styles pour la galerie d'images satellites */
+.satellite-gallery {
+    margin-top: 40px;
+}
+
+.satellite-gallery h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 400;
+}
+
+.satellite-panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.satellite-panel {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #5a5a9a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.satellite-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.satellite-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.satellite-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.satellite-panel:hover .satellite-image img {
+    transform: scale(1.05);
+}
+
+/* Épingle de carte rouge */
+.map-pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #ff0000;
+    border-radius: 50% 50% 50% 0;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.map-pin::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+/* Logo NASA Worldview */
+.nasa-logo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 10;
+}
+
+.logo-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #1e3a8a;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.logo-text {
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.logo-subtext {
+    color: #fff;
+    font-size: 7px;
+    font-weight: normal;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+/* Timestamp de date */
+.date-stamp {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 10;
+}
+
+/* Caption des images satellites */
+.satellite-caption {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.satellite-caption p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Styles pour les titres h4 */
+.content-section h4 {
+    color: #fff;
+    font-size: 1.2em;
+    margin: 20px 0 10px 0;
+    font-weight: 500;
+    border-left: 3px solid #fff;
+    padding-left: 15px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .image-panel {
+        min-height: 250px;
+    }
+    
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .content-section {
+        padding: 20px;
+    }
+    
+    .satellite-panels {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .satellite-image {
+        height: 200px;
+    }
+    
+    .logo-circle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .logo-text {
+        font-size: 9px;
+    }
+    
+    .logo-subtext {
+        font-size: 6px;
+    }
 }

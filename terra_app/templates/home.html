@@ -2,18 +2,54 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="container">
         <h1>{{ title }}</h1>
-        <div class="content">
-            <p>{{ description }}</p>
-            <img src="{% static 'images/terra_ball.jpg' %}" alt="Symbole Terra" class="main-image">
-            <p>Le satellite Terra de la NASA, lancé en 1999, célèbre plus de 25 ans d'observations. Avec ses instruments MODIS, CERES et MISR, il fournit des données essentielles sur le climat et l'environnement.</p>
-            <a href="{% url 'images' %}" class="btn">Voir les images et données</a>
+        
+        <!-- Layout en deux colonnes -->
+        <div class="main-layout">
+            <!-- Panneau gauche - Image -->
+            <div class="image-panel">
+                <img src="{% static 'images/terra_ball.jpg' %}" alt="Satellite Terra de la NASA">
+            </div>
+            
+            <!-- Panneau droit - Texte d'introduction -->
+            <div class="intro-panel">
+                <div class="intro-text">
+                    <p>Le plus ancien satellite quotidien de vision de la Terre de la NASA – Terra – n'a pas encore 25 ans, et avec cinq instruments fonctionnant en permanence à bord (la plupart prenant l'image en même temps), Terra a accumulé beaucoup de données au fil des ans (plus de 9 000 jours et plus). Ces données ont le potentiel de faire la lumière sur tout, des processus scientifiques aux événements uniques, tout en aidant à résoudre les problèmes qui affectent les humains.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section de contenu principal -->
+        <div class="content-section">
+            <h2>Le Défi du 25ème Anniversaire de Terra</h2>
+            
+            <p>Le satellite Terra de la NASA, lancé en 1999, célèbre plus de 25 ans d'observations continues de notre planète. Avec ses cinq instruments scientifiques (MODIS, CERES, MOPITT, MISR, et ASTER), Terra fournit des données essentielles sur le climat, l'environnement et les changements terrestres.</p>
+            
+            <p>Ces instruments collectent une variété impressionnante de données : des images "Blue Marble" de la Terre, des mesures du budget énergétique, des données sur la pollution atmosphérique, des vues stéréoscopiques des ouragans et de la croissance urbaine, et bien plus encore.</p>
+            
+            <h3>Objectifs</h3>
+            <p>Votre défi est d'utiliser les données de l'un ou de l'ensemble des cinq instruments de Terra pour créer un produit d'animation mettant en valeur une histoire de la science de la Terre et mettant l'accent sur les impacts pour vous, votre communauté et/ou l'environnement.</p>
+            
+            <p>Le produit peut être en 2D ou 3D et couvrir n'importe quelle durée. Il peut s'agir d'un film ou d'une série d'images de format d'échange graphique (GIF), d'un anaglyphe animé ou d'un produit interactif de système d'information géographique tridimensionnel (GIS). L'important est d'inclure le mouvement/l'animation et de commenter les impacts.</p>
+            
+            <h3>Considérations potentielles</h3>
+            <ul>
+                <li>Animer des comparaisons côte à côte de différents ensembles de données</li>
+                <li>Mélanger et assortir les données de tous les instruments Terra, avec une explication de l'inspiration et des choix de produit</li>
+                <li>Aligner géographiquement les ensembles de données si vous utilisez plusieurs instruments Terra, et être conscient des différences de résolution</li>
+                <li>Utiliser NASA Earthdata Worldview (sous l'onglet Ressources) pour faciliter ce type d'animation</li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="{% url 'images' %}" class="btn">Explorer les données et images</a>
+            </div>
         </div>
     </div>
 </body>

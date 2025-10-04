@@ -2,23 +2,99 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="container">
         <h1>{{ title }}</h1>
-        <div class="content">
-            <p>{{ history }}</p>
-            <div class="image-gallery">
+        
+        <!-- Layout en deux colonnes -->
+        <div class="main-layout">
+            <!-- Panneau gauche - Image principale -->
+            <div class="image-panel">
+                <img src="{% static 'images/terra_ball.jpg' %}" alt="Satellite Terra de la NASA">
+            </div>
+            
+            <!-- Panneau droit - Description et histoire -->
+            <div class="intro-panel">
+                <h2>Description et Histoire</h2>
+                <div class="intro-text">
+                    <p>{{ history }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section de contenu principal -->
+        <div class="content-section">
+            <h2>Données et Ressources de la NASA</h2>
+            
+            <p>Le satellite Terra de la NASA, avec ses cinq instruments scientifiques, fournit une mine de données précieuses pour comprendre notre planète. Voici les principales ressources disponibles :</p>
+            
+            <h3>Plateformes de Données Principales</h3>
+            <ul>
+                <li><strong>Earthdata Worldview</strong> - Visualisation interactive des données satellitaires en temps quasi-réel</li>
+                <li><strong>Observatoire de la Terre de la NASA</strong> - Images et histoires sur les changements climatiques</li>
+                <li><strong>Terra Animations from NASA JPL Photojournal</strong> - Animations et visualisations scientifiques</li>
+                <li><strong>JPL ASTER Data Hub</strong> - Données détaillées de l'instrument ASTER</li>
+                <li><strong>POWER Project</strong> - Prédiction des ressources énergétiques mondiales</li>
+            </ul>
+            
+            <h3>Ressources des Partenaires Internationaux</h3>
+            
+            <h4>Agence Spatiale Canadienne (ASC)</h4>
+            <p>L'instrument <strong>MOPITT</strong> à bord du satellite Terra, utilisé depuis 1999, étudie la pollution troposphérique en mesurant les concentrations de monoxyde de carbone. Ces données sont cruciales pour comprendre la qualité de l'air et les émissions polluantes.</p>
+            
+            <h4>Agence Japonaise d'Exploration Aérospatiale (JAXA)</h4>
+            <p>L'<strong>Advanced Spaceborne Thermal Emission and Reflection Radiometer (ASTER)</strong> fournit des images détaillées de la surface terrestre, incluant température, réflectivité et topographie. Les données ASTER sont utilisées pour :</p>
+            <ul>
+                <li>Modèles numériques d'élévation globaux (GDEM)</li>
+                <li>Cartographie de la couverture terrestre</li>
+                <li>Surveillance de la température de surface</li>
+                <li>Surveillance des risques naturels (volcans, tremblements de terre)</li>
+                <li>Études sur le changement climatique</li>
+            </ul>
+            
+            <h4>Agence Spatiale Brésilienne (AEB)</h4>
+            <p>Le <strong>Catalogue de l'Institut National Brésilien d'Exploration Spatiale (INPE)</strong> offre une base de données de milliers d'images provenant de plus de 16 satellites, avec des résolutions allant de 2 à 64 mètres. Toutes les images sont publiquement disponibles avec des outils de recherche intégrés.</p>
+            
+            <h3>Outils et Guides</h3>
+            <ul>
+                <li><strong>Guide des Anaglyphes</strong> de l'Observatoire de la Terre de la NASA</li>
+                <li><strong>Site Web de l'Explorateur d'Instruments Earthdata</strong></li>
+                <li><strong>Système d'Information Géographique NASA Earthdata (GIS)</strong></li>
+                <li><strong>Fire Information for Resource Management System (FIRMS)</strong></li>
+            </ul>
+        </div>
+        
+        <!-- Galerie d'images satellites -->
+        <div class="satellite-gallery">
+            <h2>Images et Données Satellitaires</h2>
+            <div class="satellite-panels">
                 {% for img in images %}
-                    <div class="image-item">
-                        <img src="{{ img.url }}" alt="{{ img.caption }}">
-                        <p>{{ img.caption }}</p>
+                    <div class="satellite-panel">
+                        <div class="satellite-image">
+                            <img src="{{ img.url }}" alt="{{ img.caption }}">
+                            <div class="map-pin"></div>
+                            <div class="nasa-logo">
+                                <div class="logo-circle">
+                                    <span class="logo-text">NASA</span>
+                                    <span class="logo-subtext">WORLDVIEW</span>
+                                </div>
+                            </div>
+                            <div class="date-stamp">2025 AUG 24</div>
+                        </div>
+                        <div class="satellite-caption">
+                            <p>{{ img.caption }}</p>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
             <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
         </div>
     </div>
