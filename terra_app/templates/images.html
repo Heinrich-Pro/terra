@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% load static %}
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <div class="content">
+            <p>{{ history }}</p>
+            <div class="image-gallery">
+                {% for img in images %}
+                    <div class="image-item">
+                        <img src="{{ img.url }}" alt="{{ img.caption }}">
+                        <p>{{ img.caption }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
+        </div>
+    </div>
+</body>
+</html>

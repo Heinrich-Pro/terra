@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% load static %}
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <div class="content">
+            <p>{{ description }}</p>
+            <img src="{% static 'images/terra_ball.jpg' %}" alt="Symbole Terra" class="main-image">
+            <p>Le satellite Terra de la NASA, lancé en 1999, célèbre plus de 25 ans d'observations. Avec ses instruments MODIS, CERES et MISR, il fournit des données essentielles sur le climat et l'environnement.</p>
+            <a href="{% url 'images' %}" class="btn">Voir les images et données</a>
+        </div>
+    </div>
+</body>
+</html>
