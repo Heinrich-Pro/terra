@@ -6,8 +6,22 @@
     <title>{{ title }}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
 </head>
 <body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="{% url 'home' %}" class="brand">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>Terra • 25 ans</span>
+            </a>
+            <nav class="site-nav" aria-label="Navigation principale">
+                <a href="{% url 'home' %}">Accueil</a>
+                <a href="{% url 'images' %}" class="active" aria-current="page">Images</a>
+                <a href="{% url 'jeux_home' %}" class="btn">Jeux éducatifs</a>
+            </nav>
+        </div>
+    </header>
     <div class="container">
         <h1>{{ title }}</h1>
         
@@ -106,7 +120,8 @@
                         <div class="date-stamp">2025 AUG 24</div>
                     </div>
                     <div class="satellite-caption">
-                        <p>Animation NASA Worldview - Données satellitaires du 24 août au 1er octobre 2025</p>
+                        <h4>Worldview • MODIS</h4>
+                        <p>Animation temporelle du 24 août au 1er octobre 2025 montrant l'évolution atmosphérique au-dessus de l'Afrique de l'Ouest.</p>
                     </div>
                 </div>
                 
@@ -124,7 +139,8 @@
                         <div class="date-stamp">2004 APR 12</div>
                     </div>
                     <div class="satellite-caption">
-                        <p>Vue topographique et bathymétrique de la Terre - Image haute résolution</p>
+                        <h4>Blue Marble • MODIS</h4>
+                        <p>Vue globale topographique et bathymétrique de la Terre (haute résolution).</p>
                     </div>
                 </div>
                 
@@ -142,7 +158,11 @@
                         <div class="date-stamp">2025 AUG 24</div>
                     </div>
                     <div class="satellite-caption">
-                        <p>Données satellitaires Terra - Instruments MODIS et CERES</p>
+                        <h4>CERES • Flux énergétique</h4>
+                        <ul>
+                            <li>Indicateur: changement climatique et absorption d’énergie</li>
+                            <li>Zone: Gabon (repère sur la carte)</li>
+                        </ul>
                     </div>
                 </div>
                 
@@ -160,7 +180,8 @@
                         <div class="date-stamp">2025 AUG 24</div>
                     </div>
                     <div class="satellite-caption">
-                        <p>Ressources et données NASA - Plateformes d'accès aux données</p>
+                        <h4>ASTER • Relief / Forêt</h4>
+                        <p>Relief et altitude du Gabon; analyse de structure du couvert forestier.</p>
                     </div>
                 </div>
                 
@@ -178,16 +199,75 @@
                         <div class="date-stamp">2025 AUG 24</div>
                     </div>
                     <div class="satellite-caption">
-                        <p>Description et histoire du satellite Terra - 25 ans d'observations</p>
+                        <h4>MODIS • Couleurs vraies</h4>
+                        <p>Observation régionale (Gabon) en couleur naturelle pour la communication et le contexte.</p>
+                    </div>
+                </div>
+                <!-- fux energetique -->
+                <div class="satellite-panel">
+                    <div class="satellite-image">
+                        <img src="{% static 'images/fulx_energetique.jpg' %}" alt="Description et histoire Terra">
+                        <div class="map-pin"></div>
+                        <div class="nasa-logo">
+                            <div class="logo-circle">
+                                <span class="logo-text">NASA</span>
+                                <span class="logo-subtext">WORLDVIEW</span>
+                            </div>
+                        </div>
+                        <div class="date-stamp">2025 AUG 24</div>
+                    </div>
+                    <div class="satellite-caption">
+                        <h4>CERES • Flux énergétique</h4>
+                        <p>Changement climatique et absorption d’énergie
+                            Animation temporelle sur 25 ans du réchauffement du Gabon</p>
+                    </div>
+                </div>
+                <!-- relief -->
+                <div class="satellite-panel">
+                    <div class="satellite-image">
+                        <img src="{% static 'images/relief.jpg' %}" alt="Description et histoire Terra">
+                        <div class="map-pin"></div>
+                        <div class="nasa-logo">
+                            <div class="logo-circle">
+                                <span class="logo-text">NASA</span>
+                                <span class="logo-subtext">WORLDVIEW</span>
+                            </div>
+                        </div>
+                        <div class="date-stamp">2025 AUG 24</div>
+                    </div>
+                    <div class="satellite-caption">
+                        <h4>MASTER • Relief</h4>
+                        <p>Relief et altitude du Gabon</p>
+                    </div>
+                </div>
+                <!-- terre -->
+                <div class="satellite-panel">
+                    <div class="satellite-image">
+                        <img src="{% static 'images/terre.png' %}" alt="Description et histoire Terra">
+                        <div class="map-pin"></div>
+                        <div class="nasa-logo">
+                            <div class="logo-circle">
+                                <span class="logo-text">NASA</span>
+                                <span class="logo-subtext">WORLDVIEW</span>
+                            </div>
+                        </div>
+                        <div class="date-stamp">2025 AUG 24</div>
+                    </div>
+                    <div class="satellite-caption">
+                        <h4>MODIS • Terre</h4>
+                        <p>Données continues depuis le lancement de Terra (1999) jusqu’à aujourd’hui</p>
                     </div>
                 </div>
             </div>
         </div>
-        
         <div style="text-align: center; margin-top: 40px;">
-            <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
-            <a href="{% url 'jeux_home' %}" class="btn" style="margin-left: 15px;">Jeux éducatifs</a>
         </div>
+        <footer class="site-footer" role="contentinfo">
+            <div class="site-footer-inner">
+                <span>© {{ now|date:'Y' }} Terra • Projet éducatif</span>
+                <span>Sources: NASA • JAXA • ASC • INPE</span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

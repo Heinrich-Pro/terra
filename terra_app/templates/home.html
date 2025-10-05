@@ -6,8 +6,22 @@
     <title>{{ title }}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
 </head>
 <body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="{% url 'home' %}" class="brand">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>Terra • 25 ans</span>
+            </a>
+            <nav class="site-nav" aria-label="Navigation principale">
+                <a href="{% url 'home' %}" class="active" aria-current="page">Accueil</a>
+                <a href="{% url 'images' %}">Images</a>
+                <a href="{% url 'jeux_home' %}" class="btn">Jeux éducatifs</a>
+            </nav>
+        </div>
+    </header>
     <div class="container">
         <h1>{{ title }}</h1>
         
@@ -27,37 +41,66 @@
             <!-- Panneau droit - Texte d'introduction -->
             <div class="intro-panel">
                 <div class="intro-text">
-                    <p>Le plus ancien satellite quotidien de vision de la Terre de la NASA – Terra – n'a pas encore 25 ans, et avec cinq instruments fonctionnant en permanence à bord (la plupart prenant l'image en même temps), Terra a accumulé beaucoup de données au fil des ans (plus de 9 000 jours et plus). Ces données ont le potentiel de faire la lumière sur tout, des processus scientifiques aux événements uniques, tout en aidant à résoudre les problèmes qui affectent les humains.</p>
+                    <p>Terra est un satellite d’observation de la Terre lancé par la NASA le 18 décembre 1999 dans le cadre du programme EOS (Earth Observing System).</p>
+                    <p>Il est l’un des satellites les plus emblématiques de la NASA, conçu pour étudier les interactions complexes entre l’atmosphère, la surface terrestre, les océans et la biosphère.</p>
                 </div>
             </div>
         </div>
         
         <!-- Section de contenu principal -->
         <div class="content-section">
-            <h2>Le Défi du 25ème Anniversaire de Terra</h2>
-            
-            <p>Le satellite Terra de la NASA, lancé en 1999, célèbre plus de 25 ans d'observations continues de notre planète. Avec ses cinq instruments scientifiques (MODIS, CERES, MOPITT, MISR, et ASTER), Terra fournit des données essentielles sur le climat, l'environnement et les changements terrestres.</p>
-            
-            <p>Ces instruments collectent une variété impressionnante de données : des images "Blue Marble" de la Terre, des mesures du budget énergétique, des données sur la pollution atmosphérique, des vues stéréoscopiques des ouragans et de la croissance urbaine, et bien plus encore.</p>
-            
-            <h3>Objectifs</h3>
-            <p>Votre défi est d'utiliser les données de l'un ou de l'ensemble des cinq instruments de Terra pour créer un produit d'animation mettant en valeur une histoire de la science de la Terre et mettant l'accent sur les impacts pour vous, votre communauté et/ou l'environnement.</p>
-            
-            <p>Le produit peut être en 2D ou 3D et couvrir n'importe quelle durée. Il peut s'agir d'un film ou d'une série d'images de format d'échange graphique (GIF), d'un anaglyphe animé ou d'un produit interactif de système d'information géographique tridimensionnel (GIS). L'important est d'inclure le mouvement/l'animation et de commenter les impacts.</p>
-            
-            <h3>Considérations potentielles</h3>
+            <h2>Objectif principal</h2>
+            <p>Lancé par la NASA en 1999, Terra est un satellite d’observation de la Terre. Il a pour mission de surveiller les grands systèmes de notre planète : l’atmosphère, la terre, les océans et les glaces.</p>
             <ul>
-                <li>Animer des comparaisons côte à côte de différents ensembles de données</li>
-                <li>Mélanger et assortir les données de tous les instruments Terra, avec une explication de l'inspiration et des choix de produit</li>
-                <li>Aligner géographiquement les ensembles de données si vous utilisez plusieurs instruments Terra, et être conscient des différences de résolution</li>
-                <li>Utiliser NASA Earthdata Worldview (sous l'onglet Ressources) pour faciliter ce type d'animation</li>
+                <li>Le changement climatique et ses causes.</li>
+                <li>La pollution atmosphérique et la qualité de l’air.</li>
+                <li>Les mouvements des nuages, des glaces et des océans.</li>
+                <li>L’évolution des forêts, des sols et des surfaces urbaines.</li>
+                <li>Les déséquilibres énergétiques entre le Soleil et la Terre.</li>
+            </ul>
+
+            <h2>Instruments</h2>
+            <p>Il fonctionne avec 5 instruments scientifiques complémentaires :</p>
+
+            <h3>MODIS (Moderate Resolution Imaging Spectroradiometer)</h3>
+            <p>MODIS dispose d’une large fauchée (environ 2 330 km), ce qui lui permet d’observer chaque endroit de la Terre en un à deux jours. Il mesure de nombreux paramètres : nuages, propriétés des nuages, aérosols, vapeur d’eau, ainsi que la végétation et l’humidité de surface.</p>
+
+            <h3>ASTER (Advanced Spaceborne Thermal Emission and Reflection Radiometer)</h3>
+            <ul>
+                <li>Images à haute résolution spatiale (15 m à 90 m) dans 14 bandes spectrales (visible à l’infrarouge thermique).</li>
+                <li>Cartographie des températures de surface, réflectance, émissivité; production de DEM; repérage de changements locaux (érosion, urbanisation).</li>
+                <li>« Loupe » permettant de zoomer sur des zones spécifiques pour voir plus de détails.</li>
+            </ul>
+
+            <h3>CERES (Clouds and the Earth’s Radiant Energy System)</h3>
+            <ul>
+                <li>Mesure le rayonnement réfléchi et émis par la Terre, du sommet de l’atmosphère jusqu’à la surface.</li>
+                <li>Contribue à quantifier le bilan énergétique de la planète.</li>
+            </ul>
+
+            <h3>MISR (Multi-angle Imaging SpectroRadiometer)</h3>
+            <ul>
+                <li>Observe la Terre sous neuf angles (nadir + huit inclinés) et plusieurs longueurs d’onde (bleu, vert, rouge, proche infrarouge).</li>
+                <li>Permet de distinguer les aérosols, les types de nuages et la structure de la couverture terrestre (végétation, sols, albédo).</li>
+            </ul>
+
+            <h3>MOPITT (Measurements of Pollution in the Troposphere)</h3>
+            <ul>
+                <li>Observe le monoxyde de carbone (CO) dans la basse atmosphère via spectroscopie infrarouge corrélée.</li>
+                <li>Fournit une distribution verticale (jusqu’à 5 couches) du CO pour retracer ses sources (industrie, feux, combustion) et son transport.</li>
+                <li>Jusqu’en 2025, MOPITT a fourni une série unique de données sur la pollution mondiale et les émissions de CO.</li>
             </ul>
             
             <div style="text-align: center; margin-top: 30px;">
-                <a href="{% url 'images' %}" class="btn">Explorer les données et images</a>
-                <a href="{% url 'jeux_home' %}" class="btn" style="margin-left: 15px;">Jeux éducatifs</a>
+                
             </div>
         </div>
+        <footer class="site-footer" role="contentinfo">
+            <div class="site-footer-inner">
+                <span>© {{ now|date:'Y' }} Terra • Projet éducatif</span>
+                <span>Sources: NASA • JAXA • ASC • INPE</span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

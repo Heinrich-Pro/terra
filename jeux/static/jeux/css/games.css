@@ -10,10 +10,10 @@
 
 /* Cartes de jeux */
 .game-card {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--nasa-light);
     border-radius: 12px;
     padding: 25px;
-    border: 2px solid #5a5a9a;
+    border: 2px solid rgba(255, 255, 255, 0.12);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -23,7 +23,7 @@
 .game-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border-color: #7a7aba;
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .game-icon {
@@ -43,7 +43,7 @@
 }
 
 .game-content h3 {
-    color: #fff;
+    color: var(--nasa-white);
     font-size: 1.3em;
     margin-bottom: 15px;
     font-weight: 500;
@@ -60,8 +60,8 @@
 .game-btn {
     display: inline-block;
     padding: 12px 25px;
-    background-color: #fff;
-    color: #4a4a8a;
+    background-color: var(--nasa-red);
+    color: var(--nasa-white);
     text-decoration: none;
     border-radius: 8px;
     font-weight: 500;
@@ -74,9 +74,14 @@
 }
 
 .game-btn:hover {
-    background-color: #f0f0f0;
+    background-color: var(--nasa-red-700);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.game-btn:focus-visible {
+    outline: 3px solid var(--accent-gold);
+    outline-offset: 2px;
 }
 
 .game-btn.disabled {
@@ -93,7 +98,7 @@
 
 /* Classement */
 .leaderboard {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--nasa-light);
     border-radius: 12px;
     padding: 25px;
     margin-top: 20px;
@@ -126,7 +131,7 @@
 }
 
 .leaderboard-item .score {
-    color: #4a4a8a;
+    color: var(--nasa-blue);
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 5px 15px;
@@ -157,7 +162,7 @@
 }
 
 .game-area {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--nasa-light);
     border-radius: 12px;
     padding: 30px;
     margin-bottom: 30px;
@@ -173,8 +178,8 @@
 
 .game-controls button {
     padding: 12px 25px;
-    background-color: #fff;
-    color: #4a4a8a;
+    background-color: var(--nasa-red);
+    color: var(--nasa-white);
     border: none;
     border-radius: 8px;
     font-weight: 500;
@@ -183,8 +188,13 @@
 }
 
 .game-controls button:hover {
-    background-color: #f0f0f0;
+    background-color: var(--nasa-red-700);
     transform: translateY(-2px);
+}
+
+.game-controls button:focus-visible {
+    outline: 3px solid var(--accent-gold);
+    outline-offset: 2px;
 }
 
 .game-controls button:disabled {

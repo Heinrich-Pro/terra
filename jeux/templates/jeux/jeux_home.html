@@ -7,8 +7,22 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
 </head>
 <body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="{% url 'home' %}" class="brand">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>Terra • 25 ans</span>
+            </a>
+            <nav class="site-nav" aria-label="Navigation principale">
+                <a href="{% url 'home' %}">Accueil</a>
+                <a href="{% url 'images' %}">Images</a>
+                <a href="{% url 'jeux_home' %}" class="btn active" aria-current="page">Jeux éducatifs</a>
+            </nav>
+        </div>
+    </header>
     <div class="container">
         <h1>{{ title }}</h1>
         
@@ -111,10 +125,15 @@
                 </div>
             </div>
         </div>
-        
         <div style="text-align: center; margin-top: 40px;">
             <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
         </div>
+        <footer class="site-footer" role="contentinfo">
+            <div class="site-footer-inner">
+                <span>© {{ now|date:'Y' }} Terra • Projet éducatif</span>
+                <span>Sources: NASA • JAXA • ASC • INPE</span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
