@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
+{% extends 'jeux/base_jeux.html' %}
+{% load static %}
+
+{% block extra_css %}
     <style>
         .memory-board {
             display: grid;
@@ -100,8 +95,9 @@
             margin-right: auto;
         }
     </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <div class="game-container">
         <div class="game-header">
             <h1>{{ title }}</h1>
@@ -138,7 +134,8 @@
             <p>Temps: <span id="final-time"></span> secondes</p>
         </div>
     </div>
-    
+{% endblock %}
+
+{% block extra_js %}
     <script src="{% static 'jeux/js/memory.js' %}"></script>
-</body>
-</html>
+{% endblock %}

@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
+{% extends 'jeux/base_jeux.html' %}
+{% load static %}
+
+{% block extra_css %}
     <style>
         .puzzle-container {
             display: flex;
@@ -14,6 +9,7 @@
             align-items: center;
             gap: 20px;
         }
+{{ ... }}
         
         .puzzle-board {
             display: grid;
@@ -85,8 +81,9 @@
             margin-bottom: 10px;
         }
     </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <div class="game-container">
         <div class="game-header">
             <h1>{{ title }}</h1>
@@ -130,7 +127,8 @@
             <p>Score: <span id="puzzle-score"></span> points</p>
         </div>
     </div>
-    
+{% endblock %}
+
+{% block extra_js %}
     <script src="{% static 'jeux/js/puzzle.js' %}"></script>
-</body>
-</html>
+{% endblock %}

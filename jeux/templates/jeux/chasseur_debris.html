@@ -1,12 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
+{% extends 'jeux/base_jeux.html' %}
+
+{% block extra_css %}
     <style>
         * {
             margin: 0;
@@ -217,8 +211,9 @@
             opacity: 0.8;
         }
     </style>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     {% csrf_token %}
     <div class="game-container">
         <div class="header">
@@ -772,5 +767,4 @@
         }
         animateStars();
     </script>
-</body>
-</html>
+{% endblock %}

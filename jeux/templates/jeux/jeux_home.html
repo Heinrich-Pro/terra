@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
-</head>
-<body>
-    <div class="container">
-        <h1>{{ title }}</h1>
+{% extends 'jeux/base_jeux.html' %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
         
         <!-- Layout en deux colonnes -->
         <div class="main-layout">
@@ -115,6 +106,4 @@
         <div style="text-align: center; margin-top: 40px;">
             <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
         </div>
-    </div>
-</body>
-</html>
+{% endblock %}
