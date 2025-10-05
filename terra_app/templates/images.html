@@ -13,22 +13,35 @@
         
         <!-- Layout en deux colonnes -->
         <div class="main-layout">
-            <!-- Panneau gauche - Vidéo YouTube -->
-            <div class="video-panel">
-                <iframe 
-                    src="https://www.youtube.com/embed/Q8A_ajMrV1o" 
-                    title="Vidéo Terra NASA" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
+            <!-- Panneau gauche - Modèle 3D Sketchfab -->
+            <div class="sketchfab-panel">
+                <div class="sketchfab-embed-wrapper">
+                    <iframe 
+                        title="Nasa" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        mozallowfullscreen="true" 
+                        webkitallowfullscreen="true" 
+                        allow="autoplay; fullscreen; xr-spatial-tracking" 
+                        xr-spatial-tracking 
+                        execution-while-out-of-viewport 
+                        execution-while-not-rendered 
+                        web-share 
+                        src="https://sketchfab.com/models/837bd4820c4f42e39a6874109206f048/embed?autospin=1&autostart=1">
+                    </iframe>
+                    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+                        <a href="https://sketchfab.com/3d-models/nasa-837bd4820c4f42e39a6874109206f048?utm_medium=embed&utm_campaign=share-popup&utm_content=837bd4820c4f42e39a6874109206f048" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Nasa</a> 
+                        by <a href="https://sketchfab.com/louisgeriel.ngabi?utm_medium=embed&utm_campaign=share-popup&utm_content=837bd4820c4f42e39a6874109206f048" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">louisgeriel.ngabi</a> 
+                        on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=837bd4820c4f42e39a6874109206f048" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                    </p>
+                </div>
             </div>
             
             <!-- Panneau droit - Description et histoire -->
             <div class="intro-panel">
                 <h2>Description et Histoire</h2>
                 <div class="intro-text">
-                    <p>{{ history }}</p>
+            <p>{{ history }}</p>
                 </div>
             </div>
         </div>
@@ -79,29 +92,101 @@
         <div class="satellite-gallery">
             <h2>Images et Données Satellitaires</h2>
             <div class="satellite-panels">
-                {% for img in images %}
-                    <div class="satellite-panel">
-                        <div class="satellite-image">
-                            <img src="{{ img.url }}" alt="{{ img.caption }}">
-                            <div class="map-pin"></div>
-                            <div class="nasa-logo">
-                                <div class="logo-circle">
-                                    <span class="logo-text">NASA</span>
-                                    <span class="logo-subtext">WORLDVIEW</span>
-                                </div>
+                <!-- Image GIF animée NASA Worldview -->
+                <div class="satellite-panel">
+                    <div class="satellite-image">
+                        <img src="{% static 'images/nasa-worldview-2025 AUG 24-to-2025 OCT 01.gif' %}" alt="Animation NASA Worldview">
+                        <div class="map-pin"></div>
+                        <div class="nasa-logo">
+                            <div class="logo-circle">
+                                <span class="logo-text">NASA</span>
+                                <span class="logo-subtext">WORLDVIEW</span>
                             </div>
-                            <div class="date-stamp">2025 AUG 24</div>
                         </div>
-                        <div class="satellite-caption">
-                            <p>{{ img.caption }}</p>
-                        </div>
+                        <div class="date-stamp">2025 AUG 24</div>
                     </div>
-                {% endfor %}
+                    <div class="satellite-caption">
+                        <p>Animation NASA Worldview - Données satellitaires du 24 août au 1er octobre 2025</p>
+                    </div>
+                </div>
+                
+                <!-- Image de la Terre -->
+                <div class="satellite-panel">
+                    <div class="satellite-image">
+                        <img src="{% static 'images/world.topo.bathy.200412.3x5400x2700.jpg' %}" alt="Vue de la Terre depuis l'espace">
+                        <div class="map-pin"></div>
+                        <div class="nasa-logo">
+                            <div class="logo-circle">
+                                <span class="logo-text">NASA</span>
+                                <span class="logo-subtext">WORLDVIEW</span>
+                            </div>
+                        </div>
+                        <div class="date-stamp">2004 APR 12</div>
+                    </div>
+                    <div class="satellite-caption">
+                        <p>Vue topographique et bathymétrique de la Terre - Image haute résolution</p>
+                    </div>
+                </div>
+                
+                <!-- Capture 1 -->
+                <div class="satellite-panel">
+                    <div class="satellite-image">
+                        <img src="{% static 'images/Capture 1.png' %}" alt="Données satellitaires Terra">
+                        <div class="map-pin"></div>
+                        <div class="nasa-logo">
+                            <div class="logo-circle">
+                                <span class="logo-text">NASA</span>
+                                <span class="logo-subtext">WORLDVIEW</span>
+                            </div>
+                        </div>
+                        <div class="date-stamp">2025 AUG 24</div>
+                    </div>
+                    <div class="satellite-caption">
+                        <p>Données satellitaires Terra - Instruments MODIS et CERES</p>
+                    </div>
+                </div>
+                
+                <!-- Capture 2 -->
+                <div class="satellite-panel">
+                    <div class="satellite-image">
+                        <img src="{% static 'images/Capture 2.png' %}" alt="Ressources et données NASA">
+                        <div class="map-pin"></div>
+                        <div class="nasa-logo">
+                            <div class="logo-circle">
+                                <span class="logo-text">NASA</span>
+                                <span class="logo-subtext">WORLDVIEW</span>
+                            </div>
+                        </div>
+                        <div class="date-stamp">2025 AUG 24</div>
+                    </div>
+                    <div class="satellite-caption">
+                        <p>Ressources et données NASA - Plateformes d'accès aux données</p>
+                    </div>
+                </div>
+                
+                <!-- Capture 3 -->
+                <div class="satellite-panel">
+                    <div class="satellite-image">
+                        <img src="{% static 'images/Capture 3.png' %}" alt="Description et histoire Terra">
+                        <div class="map-pin"></div>
+                        <div class="nasa-logo">
+                            <div class="logo-circle">
+                                <span class="logo-text">NASA</span>
+                                <span class="logo-subtext">WORLDVIEW</span>
+                            </div>
+                        </div>
+                        <div class="date-stamp">2025 AUG 24</div>
+                    </div>
+                    <div class="satellite-caption">
+                        <p>Description et histoire du satellite Terra - 25 ans d'observations</p>
+                    </div>
+                </div>
             </div>
         </div>
         
         <div style="text-align: center; margin-top: 40px;">
             <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
+            <a href="{% url 'jeux_home' %}" class="btn" style="margin-left: 15px;">Jeux éducatifs</a>
         </div>
     </div>
 </body>

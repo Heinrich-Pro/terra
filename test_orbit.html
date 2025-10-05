@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Orbit Game</title>
+    <style>
+        body {
+            background-color: #1a1a3a;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        #game-canvas {
+            border: 2px solid #5a5a9a;
+            border-radius: 8px;
+            background: radial-gradient(circle, #1a1a3a, #000);
+            display: block;
+            margin: 20px auto;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4a4a8a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #5a5a9a;
+        }
+        button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        .stat {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Test du Jeu Trajectoire Orbitale</h1>
+    
+    <div class="stats">
+        <div class="stat">Score: <span id="score">0</span></div>
+        <div class="stat">Temps: <span id="timer">60</span>s</div>
+        <div class="stat">Niveau: <span id="level">1</span></div>
+    </div>
+    
+    <canvas id="game-canvas" width="800" height="600"></canvas>
+    
+    <div class="controls">
+        <button id="thrust-left">← Gauche</button>
+        <button id="thrust-right">Droite →</button>
+        <button id="thrust-up">↑ Haut</button>
+        <button id="thrust-down">Bas ↓</button>
+    </div>
+    
+    <div class="controls">
+        <button id="start-game">Commencer</button>
+        <button id="pause-game" disabled>Pause</button>
+        <button id="restart-game">Recommencer</button>
+    </div>
+    
+    <div id="game-over" style="display: none; text-align: center; margin-top: 20px;">
+        <h2>Jeu terminé !</h2>
+        <p>Score final: <span id="final-score"></span></p>
+        <p id="game-over-message"></p>
+    </div>
+    
+    <script>
+        console.log('Test page loaded');
+    </script>
+    <script src="/static/jeux/js/orbit.js"></script>
+    <script>
+        console.log('Script loaded');
+    </script>
+</body>
+</html>

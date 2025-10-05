@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('terra_app.urls')),  # Inclut les URLs de ton app à la racine
+    path('jeux/', include('jeux.urls')),  # Route toutes les URLs commençant par /jeux/ vers l'app jeux
 ]

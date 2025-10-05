@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'terra_app.apps.TerraAppConfig',
+    'jeux'
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

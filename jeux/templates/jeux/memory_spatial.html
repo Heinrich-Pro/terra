@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
+    <style>
+        .memory-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .memory-card {
+            aspect-ratio: 1;
+            background-color: #4a4a8a;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .memory-card:hover {
+            background-color: #5a5a9a;
+            transform: scale(1.05);
+        }
+        
+        .memory-card.flipped {
+            background-color: #fff;
+            color: #4a4a8a;
+        }
+        
+        .memory-card.matched {
+            background-color: #4ecdc4;
+            color: #fff;
+            cursor: default;
+        }
+        
+        .memory-card.matched:hover {
+            transform: none;
+        }
+        
+        .card-content {
+            display: none;
+        }
+        
+        .memory-card.flipped .card-content {
+            display: block;
+        }
+        
+        .memory-card.matched .card-content {
+            display: block;
+        }
+        
+        .difficulty-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .difficulty-btn {
+            padding: 10px 20px;
+            background-color: #4a4a8a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .difficulty-btn.active {
+            background-color: #7a7aba;
+        }
+        
+        .difficulty-btn:hover {
+            background-color: #5a5a9a;
+        }
+        
+        .memory-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>{{ title }}</h1>
+            <p>Trouvez les paires d'images liées au satellite Terra et à ses découvertes</p>
+        </div>
+        
+        <div class="memory-stats">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="timer">Temps: <span id="timer">120</span>s</div>
+            <div class="level">Paires: <span id="pairs-found">0</span>/8</div>
+        </div>
+        
+        <div class="game-area">
+            <div class="difficulty-selector">
+                <button class="difficulty-btn active" data-size="4">Facile (4x4)</button>
+                <button class="difficulty-btn" data-size="6">Moyen (6x6)</button>
+                <button class="difficulty-btn" data-size="8">Difficile (8x8)</button>
+            </div>
+            
+            <div id="memory-board" class="memory-board"></div>
+            
+            <div class="game-controls">
+                <button id="start-memory" class="game-btn">Commencer</button>
+                <button id="shuffle-memory" class="game-btn">Mélanger</button>
+                <button id="restart-memory" class="game-btn">Recommencer</button>
+                <a href="{% url 'jeux_home' %}" class="game-btn">Retour aux jeux</a>
+            </div>
+        </div>
+        
+        <div id="memory-complete" style="display: none; text-align: center; margin-top: 20px;">
+            <h2>🎉 Memory terminé !</h2>
+            <p>Félicitations ! Vous avez trouvé toutes les paires.</p>
+            <p>Score final: <span id="final-score"></span></p>
+            <p>Temps: <span id="final-time"></span> secondes</p>
+        </div>
+    </div>
+    
+    <script src="{% static 'jeux/js/memory.js' %}"></script>
+</body>
+</html>

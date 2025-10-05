@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>{{ title }}</h1>
+            <p>Testez vos connaissances sur le satellite Terra et ses instruments scientifiques</p>
+        </div>
+        
+        <div class="game-stats">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="timer">Temps: <span id="timer">30</span>s</div>
+            <div class="level">Question: <span id="question-number">1</span>/10</div>
+        </div>
+        
+        <div class="game-area" id="game-area">
+            <div id="question-container">
+                <h2 id="question-text">Chargement...</h2>
+                <div id="options-container">
+                    <!-- Les options seront générées dynamiquement -->
+                </div>
+            </div>
+            
+            <div id="result-container" style="display: none;">
+                <h2 id="result-text"></h2>
+                <p id="explanation-text"></p>
+                <button id="next-question" class="game-btn">Question suivante</button>
+            </div>
+            
+            <div id="final-score" style="display: none;">
+                <h2>Quiz terminé !</h2>
+                <p>Votre score final: <span id="final-score-value"></span></p>
+                <p id="performance-message"></p>
+                <div class="game-controls">
+                    <button onclick="restartQuiz()" class="game-btn">Recommencer</button>
+                    <a href="{% url 'jeux_home' %}" class="game-btn">Retour aux jeux</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'jeux/js/quiz.js' %}"></script>
+</body>
+</html>

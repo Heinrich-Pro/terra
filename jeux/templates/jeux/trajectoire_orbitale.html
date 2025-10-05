@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
+    <style>
+        #game-canvas {
+            border: 2px solid #5a5a9a;
+            border-radius: 8px;
+            background: radial-gradient(circle, #1a1a3a, #000);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .orbit-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .orbit-controls button {
+            padding: 10px 20px;
+            background-color: #4a4a8a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .orbit-controls button:hover {
+            background-color: #5a5a9a;
+        }
+        
+        .orbit-controls button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    {% csrf_token %}
+    <div class="game-container">
+        <div class="game-header">
+            <h1>{{ title }}</h1>
+            <p>Maintenez l'orbite de Terra et évitez les débris spatiaux tout en collectant des données scientifiques</p>
+        </div>
+        
+        <div class="game-stats">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="timer">Temps: <span id="timer">60</span>s</div>
+            <div class="level">Niveau: <span id="level">1</span></div>
+        </div>
+        
+        <div class="game-area">
+            <canvas id="game-canvas" width="800" height="600" style="display: block; margin: 0 auto;"></canvas>
+            
+            <div class="orbit-controls">
+                <button id="thrust-left">← Poussée Gauche</button>
+                <button id="thrust-right">Poussée Droite →</button>
+                <button id="thrust-up">↑ Poussée Haut</button>
+                <button id="thrust-down">↓ Poussée Bas</button>
+            </div>
+            
+            <div class="game-controls">
+                <button id="start-game" class="game-btn">Commencer</button>
+                <button id="pause-game" class="game-btn" disabled>Pause</button>
+                <button id="restart-game" class="game-btn">Recommencer</button>
+                <a href="{% url 'jeux_home' %}" class="game-btn">Retour aux jeux</a>
+            </div>
+        </div>
+        
+        <div id="game-over" style="display: none; text-align: center; margin-top: 20px;">
+            <h2>Jeu terminé !</h2>
+            <p>Score final: <span id="final-score"></span></p>
+            <p id="game-over-message"></p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('Template chargé, chargement du script...');
+    </script>
+    <script src="{% static 'jeux/js/orbit.js' %}"></script>
+    <script>
+        console.log('Script chargé');
+    </script>
+</body>
+</html>

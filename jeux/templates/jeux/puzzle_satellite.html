@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
+    <style>
+        .puzzle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .puzzle-board {
+            display: grid;
+            gap: 2px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .puzzle-piece {
+            background-color: #666;
+            border: 1px solid #999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            color: #fff;
+        }
+        
+        .puzzle-piece:hover {
+            background-color: #777;
+            transform: scale(1.05);
+        }
+        
+        .puzzle-piece.empty {
+            background-color: transparent;
+            border: 1px dashed #999;
+        }
+        
+        .puzzle-piece.correct {
+            background-color: #4ecdc4;
+        }
+        
+        .difficulty-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .difficulty-btn {
+            padding: 10px 20px;
+            background-color: #4a4a8a;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .difficulty-btn.active {
+            background-color: #7a7aba;
+        }
+        
+        .difficulty-btn:hover {
+            background-color: #5a5a9a;
+        }
+        
+        .puzzle-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .puzzle-info img {
+            max-width: 200px;
+            max-height: 150px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>{{ title }}</h1>
+            <p>Reconstituez les images célèbres capturées par Terra</p>
+        </div>
+        
+        <div class="game-stats">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="timer">Temps: <span id="timer">300</span>s</div>
+            <div class="level">Puzzle: <span id="puzzle-number">1</span>/5</div>
+        </div>
+        
+        <div class="game-area">
+            <div class="difficulty-selector">
+                <button class="difficulty-btn active" data-size="3">Facile (3x3)</button>
+                <button class="difficulty-btn" data-size="4">Moyen (4x4)</button>
+                <button class="difficulty-btn" data-size="5">Difficile (5x5)</button>
+            </div>
+            
+            <div class="puzzle-info">
+                <img id="target-image" src="" alt="Image à reconstituer">
+                <h3 id="puzzle-title">Chargement...</h3>
+                <p id="puzzle-description"></p>
+            </div>
+            
+            <div class="puzzle-container">
+                <div id="puzzle-board" class="puzzle-board"></div>
+            </div>
+            
+            <div class="game-controls">
+                <button id="shuffle-puzzle" class="game-btn">Mélanger</button>
+                <button id="solve-puzzle" class="game-btn">Résoudre</button>
+                <button id="next-puzzle" class="game-btn" disabled>Puzzle suivant</button>
+                <a href="{% url 'jeux_home' %}" class="game-btn">Retour aux jeux</a>
+            </div>
+        </div>
+        
+        <div id="puzzle-complete" style="display: none; text-align: center; margin-top: 20px;">
+            <h2>🎉 Puzzle résolu !</h2>
+            <p>Félicitations ! Vous avez reconstitué l'image de Terra.</p>
+            <p>Score: <span id="puzzle-score"></span> points</p>
+        </div>
+    </div>
+    
+    <script src="{% static 'jeux/js/puzzle.js' %}"></script>
+</body>
+</html>

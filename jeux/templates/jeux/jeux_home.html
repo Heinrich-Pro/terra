@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'jeux/css/games.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        
+        <!-- Layout en deux colonnes -->
+        <div class="main-layout">
+            <!-- Panneau gauche - Modèle 3D Sketchfab -->
+            <div class="sketchfab-panel">
+                <div class="sketchfab-embed-wrapper">
+                    <iframe 
+                        title="Nasa" 
+                        frameborder="0" 
+                        allowfullscreen 
+                        mozallowfullscreen="true" 
+                        webkitallowfullscreen="true" 
+                        allow="autoplay; fullscreen; xr-spatial-tracking" 
+                        xr-spatial-tracking 
+                        execution-while-out-of-viewport 
+                        execution-while-not-rendered 
+                        web-share 
+                        src="https://sketchfab.com/models/837bd4820c4f42e39a6874109206f048/embed?autospin=1&autostart=1">
+                    </iframe>
+                    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+                        <a href="https://sketchfab.com/3d-models/nasa-837bd4820c4f42e39a6874109206f048?utm_medium=embed&utm_campaign=share-popup&utm_content=837bd4820c4f42e39a6874109206f048" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Nasa</a> 
+                        by <a href="https://sketchfab.com/louisgeriel.ngabi?utm_medium=embed&utm_campaign=share-popup&utm_content=837bd4820c4f42e39a6874109206f048" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">louisgeriel.ngabi</a> 
+                        on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=837bd4820c4f42e39a6874109206f048" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Panneau droit - Introduction -->
+            <div class="intro-panel">
+                <h2>Découvrez Terra à travers le jeu !</h2>
+                <div class="intro-text">
+                    <p>Explorez l'univers fascinant du satellite Terra de la NASA à travers une série de jeux éducatifs et interactifs. Testez vos connaissances, développez vos compétences et découvrez les mystères de l'observation terrestre depuis l'espace.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section des jeux -->
+        <div class="content-section">
+            <h2>Collection de Jeux Éducatifs</h2>
+            <p>Choisissez un jeu pour commencer votre aventure spatiale avec Terra :</p>
+            
+            <div class="games-grid">
+                {% for game in games %}
+                    <div class="game-card">
+                        <div class="game-icon">
+                            {% if game.name == 'Quiz Satellite Terra' %}
+                                <span class="icon">🧠</span>
+                            {% elif game.name == 'Trajectoire Orbitale' %}
+                                <span class="icon">🛰️</span>
+                            {% elif game.name == 'Puzzle d\'Images Satellitaires' %}
+                                <span class="icon">🧩</span>
+                            {% elif game.name == 'Memory Spatial' %}
+                                <span class="icon">🧠</span>
+                            {% elif game.name == 'Chasseur de Débris Spatiaux' %}
+                                <span class="icon">🎯</span>
+                            {% elif game.name == 'Timeline Terra' %}
+                                <span class="icon">📅</span>
+                            {% elif game.name == 'Comparaison Avant/Après' %}
+                                <span class="icon">🔄</span>
+                            {% elif game.name == 'Mini-Simulateur d\'Observation' %}
+                                <span class="icon">🔭</span>
+                            {% else %}
+                                <span class="icon">🎮</span>
+                            {% endif %}
+                        </div>
+                        <div class="game-content">
+                            <h3>{{ game.name }}</h3>
+                            <p>{{ game.description }}</p>
+                            {% if game.url != '#' %}
+                                <a href="{% url game.url %}" class="game-btn">Jouer</a>
+                            {% else %}
+                                <button class="game-btn disabled" disabled>Bientôt disponible</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Section des scores -->
+        <div class="content-section">
+            <h2>Classement des Meilleurs Scores</h2>
+            <div class="leaderboard">
+                <div class="leaderboard-item">
+                    <span class="rank">1</span>
+                    <span class="player">Astronaut Alex</span>
+                    <span class="score">2,450 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">2</span>
+                    <span class="player">Space Explorer</span>
+                    <span class="score">2,100 pts</span>
+                </div>
+                <div class="leaderboard-item">
+                    <span class="rank">3</span>
+                    <span class="player">Terra Master</span>
+                    <span class="score">1,950 pts</span>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="{% url 'home' %}" class="btn">Retour à l'accueil</a>
+        </div>
+    </div>
+</body>
+</html>
